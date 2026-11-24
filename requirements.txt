@@ -1,8 +1,10 @@
-jax
-chex
-optax
-equinox
-flax        # use flax or equinox
+jax==0.12.1
+jaxlib==0.12.1
+chex==0.1.92
+equinox==0.13.8
+optax==0.2.9
 
-numpy
-pygame
+
+numpy==2.5.5
+scipy==1.18.1
+matplotlib==3.11.2

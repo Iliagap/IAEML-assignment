@@ -1,0 +1,13 @@
+{
+  "steps": 262144,
+  "envs": 16,
+  "rollout": 128,
+  "seed": 42,
+  "out": "results/ppo_improved",
+  "action_repeat": 6,
+  "gamma": 0.995,
+  "obs_dim": 25,
+  "map": 0,
+  "max_physics_steps": 1800,
+  "curriculum": "first 15% near goal, next 30% middle, remaining original spawn"
+}
