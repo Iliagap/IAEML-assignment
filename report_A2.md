@@ -1,9 +1,8 @@
 # Assignment 2 — Reinforcement Learning for RoboTaxi Navigation
 
 **Course:** Introduction to Adaptive and Efficient Machine Learning (IAEML)  
-**Author:** [Full name]  
-**Group:** [Group]  
-**Signature:** [Sign before submission]
+**Author:** [Ilia Salmin]  
+**Group:** [AI-03]  
 
 ## 1. Experimental setup and RL model
 
@@ -114,15 +113,9 @@ The initial success-video export also selected the wrong frames for the reported
 
 ### 3.2. Reflection
 
-The main difficulty in this assignment was designing a training setup that encouraged the agent to reach the destination rather than simply avoid collisions. During the first PPO experiment, the training process completed more than one million environment steps, but the success rate remained at zero. After evaluating the trained model and inspecting the video, it became clear that the agent had learned to remain stationary because this behavior was less costly than attempting navigation and risking a collision.
+The biggest challenge was getting the agent to move instead of staying still to avoid collisions. After watching the baseline evaluation, I changed the reward, introduced curriculum learning and used action repetition. The improved policy reached the goal in 1 out of 10 stochastic evaluation episodes, and training throughput increased from 1,594 to 2,608 physics steps per second.
 
-To address this problem, several changes were introduced, including route-based reward shaping, curriculum learning, action repetition, and modifications to the training hyperparameters. Curriculum learning allowed the agent to start with shorter navigation tasks before attempting the complete route. Action repetition reduced the number of policy decisions required and improved computational efficiency.
-
-The second experiment produced better navigation behavior and achieved a 10% success rate during stochastic evaluation. Computational throughput also increased from 1,594 to 2,608 physics steps per second.
-
-An important takeaway from this experiment is that an improving reward does not necessarily indicate that an agent is learning the intended behavior. Evaluating the actual trajectory and terminal outcomes is equally important.
-
-Although the final agent successfully reached the destination in one evaluation episode, its collision rate remains high. Further improvements could include adaptive curriculum learning, better obstacle-aware rewards, and evaluation across different maps and random seeds.
+I learned that a better reward does not always mean better behavior. Watching the agent and checking its actual success rate are just as important. The policy still collides too often and needs further improvement.
 
 ## 4. Results and local reproduction
 
@@ -216,5 +209,3 @@ The improved trainer requires a new output directory if a metrics file already e
 - IAEML Lecture 4: Learning Frameworks, curriculum learning.
 - IAEML Lecture 8: Foundations of High-Performance Computing in Machine Learning.
 - Starter environment: [InnoRL/IAEML-assignment](https://github.com/InnoRL/IAEML-assignment).
-- Schulman et al. (2017), *Proximal Policy Optimization Algorithms*, arXiv:1707.06347.
-- Schulman et al. (2015), *High-Dimensional Continuous Control Using Generalized Advantage Estimation*, arXiv:1506.02438.

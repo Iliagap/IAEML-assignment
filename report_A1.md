@@ -1,9 +1,9 @@
 # Assignment 1 — RoboTaxi Environment
 
 **Course:** Introduction to Adaptive and Efficient Machine Learning (IAEML)  
-**Author:** [Full name]  
-**Group:** [Group]  
-**Signature:** [Sign before submission]
+**Author:** [Ilia Salmin]  
+**Group:** [AI-03]  
+
 
 ## 1. Vehicle dynamics model
 
@@ -132,13 +132,9 @@ The video displays static and moving obstacles, the vehicle and its heading, sen
 
 ### Reflection
 
-The first difficulty was implementing vehicle dynamics while maintaining compatibility with the existing JAX environment. Initially, the vehicle collided with an obstacle immediately after the first simulation step. After checking the distances between the vehicle and nearby obstacles, the problem was identified as a difference between our collision detection logic and the convention used in the original environment. This was resolved by using the original collision detection method.
+Сhallenge i faced was getting the vehicle dynamics to work with the existing JAX environment. I fixed the initial collision issue by following the original collision detection convention. Adding a Pure Pursuit controller, adjusting the wheelbase and braking for moving obstacles helped the vehicle reach the goal in 1,118 steps without collisions.
 
-Another challenge was controlling the vehicle. The initial simulation used constant acceleration and steering, which eventually caused a collision. To address this, a Pure Pursuit controller was introduced, together with adaptive speed control and braking when approaching moving obstacles. Reducing the wheelbase also allowed the vehicle to make tighter turns within the limited map space.
-
-There was also an issue with Matplotlib on Windows, which was resolved by switching to the Agg rendering backend.
-
-The final simulation successfully reached the destination in 1,118 steps without collisions. This assignment demonstrated the importance of testing individual environment components before combining them into a complete system. One remaining limitation is that the controller uses a manually defined reference path specific to the selected map.
+I learned that testing components separately makes debugging much easier. The controller still relies on a manually defined route for one map.
 
 ### Reproduction instructions
 
